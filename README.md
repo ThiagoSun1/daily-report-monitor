@@ -1,63 +1,57 @@
-# Patient Tracking
+# Patient Tracking System
 
-A Jetson Orin Nano-based patient tracking system **uses a YOLO model to classify behavior and have an AI supervisor to talk to the patient** .
+A Jetson Orin Nano-based patient monitoring system that **uses YOLO pose estimation, servo tracking, and an AI voice assistant to detect patient behavior and respond in real time**.
 
 ---
 
 ## 🕹️😐 Overview
 
-This project allows you to **keep track of patient statuses just by sitting in your office**.  
+This project allows you to **monitor a patient remotely using a camera that physically follows them**, while automatically detecting possible pain or emergencies.
 
 ---
 
 ## 🧠 Features
 
-- 🎯 Uses YOLO to track a patient and they're behavior
-- 🎮 Uses a live camera stream
-- ⚙️ Runs entirely on a Jetson Orin Nano
-- 🐍 Written in pure Python with no external apps or software needed
+- 🎯 Uses YOLOv8 to track patient pose
+- 🎥 Live camera stream with OpenCV
+- 🤖 AI assistant (Ollama) that talks to the patient
+- 🔊 Text-to-speech voice system (pyttsx3)
+- ⚙️ Servo motor tracking (Pan + Tilt)
+- 🧠 Behavior detection:
+  - Fall detection  
+  - Head pain  
+  - Stomach pain  
+  - Back pain  
+- ⏰ Scheduled reminders
+- 📊 Event logging system
+- 📧 Email reporting
+- 🔇 Error suppression (clean terminal output)
 
 ---
 
 ## 📦 Hardware Requirements
 
-- Jetson Orin Nano
-  
+- Jetson Orin Nano  
+- USB Camera (e.g., Logitech C270)  
+- PCA9685 Servo Driver  
+- 2x MG995 Servos  
+- External power supply for servos  
+
 ---
 
 ## 🧰 Software Requirements
 
-Before installing anything, make sure you're in a virtual enviroment:
+Before installing anything, make sure you're in a virtual environment:
 
 ```bash
-
 # clone the repository
 git clone https://github.com/ThiagoSun1/patient-tracking
 
-# install package to create virtual enviroment
+# install virtualenv
 sudo apt install virtualenv
 
-# make virtual enviroment
+# create virtual environment
 virtualenv venv
 
-# activate virtual enviroment
-source ~/venv/bin/activate
-
-```
-
-- Python 3.10 (pre-installed on Jetson Orin Nano in virtual envirments)
-- The following Python libraries:
-
-```bash
-sudo apt update
-sudo apt install python3-pip
-
-# install necessary dependencies
-pip install -r requirements.txt --force-reinstall
-
-# run the tracker
-cd ~/patient-tracking
-python3 ollama+hpc.py
-
-```
-
+# activate virtual environment
+source venv/bin/activate
